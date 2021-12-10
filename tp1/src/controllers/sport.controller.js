@@ -6,10 +6,6 @@ class SportController {
      */
     async list(req, res) {
         const sports = await Sport.find();
-       /* res.json({
-            count: sports.length,
-            sports: sports.name
-        });*/
         return sports
     }
 
@@ -21,7 +17,7 @@ class SportController {
         res.redirect('sports')
     }
 
-    async listAthleteAllSports(){
+    /*async listAthleteAllSports(){
         const sports = await Sport.find();
         const athleteSport = [];
         sports.forEach(sports => {
@@ -34,7 +30,7 @@ class SportController {
             }
         });
         return athleteSport;
-    }
+    }*/
 
     
     async listAthleteBySports(sportId, athleteId ,res){
