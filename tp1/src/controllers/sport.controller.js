@@ -1,4 +1,5 @@
 const Sport = require('../models/sport.model');
+const mongoose = require('mongoose');
 
 class SportController {
     /**
@@ -23,10 +24,12 @@ class SportController {
         return SportById.athletes;
     }
 
-    async addAthleteInSport(sportId, athleteName){
+    //Ajouter Athlete dans un sport
+    async addAthleteInSport(sportId, athleteId){
         const monSport = await Sport.findById(sportId);
-        const monAthlete = athleteName;
-
+        const monAthlete = athleteId;
+        monSport.athletes.push(mongoose.Types.ObjectId(monAthlete));
+        monSport.save();
     }
 
 }

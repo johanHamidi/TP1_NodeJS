@@ -34,14 +34,14 @@
 <form action="sports/addAthleteInSports" method="POST">
 
     <a>Ajouter un Athletes dans un sport: </a><br>
-    <select name="AthleteName">
+    <select name="AthleteId">
         {{#each listAthlete}}
         <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
         {{/each}}
     </select>
 
     <a>Sport :</a>
-    <select name="sportName">
+    <select name="sportId">
         {{#each listSport}}
         <option value="{{this._id}}">{{this.name}}</option>
         {{/each}}

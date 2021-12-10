@@ -19,11 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:sportId/athletes', async (req, res) => {
   const sportId = req.params.sportId;
   const listAthleteIdBySport = await sportController.listAthleteIdBySport(sportId, res);
-  console.log(listAthleteIdBySport);
-
   const listAthleteBySport = await Athlete.find({ '_id': {$in : listAthleteIdBySport }});
-
-  console.log(listAthleteBySport);
   res.render('sports', {listAthleteBySport});
 });
 
@@ -38,11 +34,9 @@ router.post('/createSports', (req, res) => {
 
 //Ajouter un Athlete dans un sport
 router.post('/addAthleteInSports', (req, res) => {
-  const monAthlete = req.body.AthleteName;
-  const monSport = req.body.sportName;
-  console.log(monAthlete);
-  console.log(monSport);
-  //sportController.addAthleteInSport(monAthlete, monSport);
+  const monSport = req.body.sportId;
+  const monAthlete = req.body.AthleteId;
+  sportController.addAthleteInSport(monSport, monAthlete);
 })
   
 
