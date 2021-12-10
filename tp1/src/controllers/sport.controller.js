@@ -33,8 +33,8 @@ class SportController {
     }*/
 
     
-    async listAthleteBySports(sportId, athleteId ,res){
-        const MalistAthletebySport = await Sport.findById(sportId);
+    async listAthleteBySport(sportId, athleteId ,res){
+        const MalistAthletebySport = await Sport.findById(sportId).where('athletes').in(athleteId);
         return MalistAthletebySport;
     }
 
