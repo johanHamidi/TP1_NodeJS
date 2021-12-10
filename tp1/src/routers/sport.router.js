@@ -17,6 +17,7 @@ router.get('/sports/', async (req, res) => {
 //Consulter les athlètes d'un sport 
 router.get('/sports/:sportId/athletes', async (req, res) => {
   const listAthleteBySport = await sportController.listAthleteBySport(req, res);
+  console.log(listAthleteBySport);
   res.render('sports', {listAthleteBySport});
 });
 
