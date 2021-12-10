@@ -5,18 +5,25 @@ const router = express.Router();
 const SportController = require('../controllers/sport.controller');
 const sportController = new SportController();
 const AthleteController = require('../controllers/athlete.controller');
+const Athlete = require('../models/athlete.model');
 const athleteController = new AthleteController();
 
 //Lister les sports
-router.get('/sports/', async (req, res) => {
+router.get('/', async (req, res) => {
    const listSport =  await sportController.list(req, res);
    const listAthlete = await athleteController.list(req, res);
    res.render('sports', {listSport, listAthlete});
 });
 
 //Consulter les athlètes d'un sport 
-router.get('/sports/:sportId/athletes', async (req, res) => {
-  const listAthleteBySport = await sportController.listAthleteBySport(req, res);
+router.get('/:sportId/athletes', async (req, res) => {
+  const sportId = req.params.sportId;
+  const listAthleteIdBySport = await sportController.listAthleteIdBySport(sportId, res);
+  console.log(listAthleteIdBySport);
+
+  const listAthleteBySport = await Athlete.find({ '_id': {$in : listAthleteIdBySport }});
+
+  console.log(listAthleteBySport);
   res.render('sports', {listAthleteBySport});
 });
 

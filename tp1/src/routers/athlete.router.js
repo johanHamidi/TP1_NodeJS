@@ -4,12 +4,12 @@ const router = express.Router();
 const AthleteController = require('../controllers/athlete.controller');
 const athleteController = new AthleteController();
 
-router.get('/athletes/', async (req, res) => {
+router.get('/', async (req, res) => {
    const listAthlete =  await athleteController.list(req, res);
    res.render('athletes', {listAthlete});
 });
 
-router.get('/athletes/:athleteId/sports', async (req, res) => {
+router.get('/:athleteId/sports', async (req, res) => {
   const athleteId = req.params.athleteId;
   const listSportsAthlete =  await athleteController.listSportsByAthlete(athleteId, res);
   res.render('athletes', {listSportsAthlete});
