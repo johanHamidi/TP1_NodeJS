@@ -31,3 +31,23 @@
     </select>
     <button type="submit">Ajouter Athlete</button>
 </form> -->
+
+<!-- ajouter Athletes existant dans un Sport -->
+<form action="addAthleteInSports" method="POST">
+
+    <a>Ajouter un Athletes : </a><br>
+    <select name="AthleteName">
+        {{#each listAthlete}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+
+    <a>Sport :</a>
+    <select name="sportName">
+        {{#each listSport}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+
+    <button type="submit">Ajouter Athlete</button>
+</form>

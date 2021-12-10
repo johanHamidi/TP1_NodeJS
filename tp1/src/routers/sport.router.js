@@ -8,7 +8,8 @@ const sportController = new SportController();
 //Lister les sports
 router.get('/sports/', async (req, res) => {
    const listSport =  await sportController.list(req, res);
-   res.render('sports', {listSport});
+   const listAthlete = await sportController.listAthleteAllSports();
+   res.render('sports', {listSport, listAthlete});
 });
 
 //Consulter les athlètes d'un sport 
@@ -27,13 +28,11 @@ router.post('/createSports', (req, res) => {
   })
 
 
-//Ajouter un nouvel Athlete dans un sport
+//Ajouter un Athlete dans un sport
 router.post('/addAthleteInSports', (req, res) => {
-  /* console.log(req.body);
-  console.log(req.body.sportName);
-  const sportId = req.params.sportId;
-  sportController.addAthleteInSport(sportName, res);*/
-
+  const monAthlete = req.body.AthleteName;
+  const monSport = req.body.sportName;
+  sportController.addAthleteInSport(monAthlete, monSport);
 })
   
 
