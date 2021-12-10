@@ -38,7 +38,7 @@
     <a>Ajouter un Athletes dans un sport: </a><br>
     <select name="AthleteName">
         {{#each listAthlete}}
-        <option value="{{this}}">{{this}}</option>
+        <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
         {{/each}}
     </select>
 

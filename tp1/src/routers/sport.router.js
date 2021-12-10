@@ -4,11 +4,13 @@ const router = express.Router();
 
 const SportController = require('../controllers/sport.controller');
 const sportController = new SportController();
+const AthleteController = require('../controllers/athlete.controller');
+const athleteController = new AthleteController();
 
 //Lister les sports
 router.get('/sports/', async (req, res) => {
    const listSport =  await sportController.list(req, res);
-   const listAthlete = await sportController.listAthleteAllSports();
+   const listAthlete = await athleteController.list(req, res);
    res.render('sports', {listSport, listAthlete});
 });
 
