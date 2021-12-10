@@ -17,9 +17,23 @@ class SportController {
         return sports
     }
 
-    async insertSport(sportName){
+    async insertSport(sportName, res){
+        //ajouter dans collection mongoose
         Sport.create(sportName);
+        //redirection sur lui-même
+        res.redirect('sports')
     }
+
+    async listAthleteBySports(sportId, res){
+        const MalistAthletebySport = await Sport.findById(sportId);
+        return MalistAthletebySport;
+    }
+
+    
+    /*async addAthleteInSport(sportId, athleteId ,res){
+        const MalistAthletebySport = await Sport.findById(sportId);
+        return MalistAthletebySport;
+    }*/
 
 }
 

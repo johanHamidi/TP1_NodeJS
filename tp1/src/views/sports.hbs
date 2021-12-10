@@ -1,12 +1,33 @@
 <a>Sport :</a>
 {{#each listSport}}
-<li>{{name}}</li>
+<a href="sports/{{_id}}/athletes"><li>{{name}}</li></a>
+{{/each}}
+
+{{#each listAthleteBySport}}
+    {{#each athletes}}
+    <li>{{this}}</li>
+    {{/each}}
 {{/each}}
 
 <br>
 
+<!-- ajouter nouveau Sport -->
 <form action="createSports" method="POST">
-    <a>Ajouter sport : </a><br>
+    <a>Ajouter un sport : </a><br>
     <input type="text" placeholder="Sport name" name="name">
     <button type="submit">Submit</button>
 </form>
+
+<!-- ajouter nouvel Athletes dans un Sport 
+<form action="addAthleteInSports" method="POST">
+    <a>Ajouter un Athletes : </a><br>
+    <input type="text" placeholder="Athlete name" name="Athlete name">
+
+    <a>Sport :</a>
+    <select name="sportName">
+        {{#each listSport}}
+        <option value="{{this.name}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <button type="submit">Ajouter Athlete</button>
+</form> -->
