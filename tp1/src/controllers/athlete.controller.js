@@ -1,6 +1,6 @@
 const Athlete = require('../models/athlete.model');
 const Sport = require('../models/sport.model');
-
+let mongoose = require('mongoose');
 
 class AthleteController {
     /**
@@ -19,7 +19,7 @@ class AthleteController {
     }
 
     async listSportsByAthlete(athleteId, res) {
-        const listSportsAthlete = await Sport.find({ athletes : Athlete({athleteId})});
+        const listSportsAthlete = await Sport.find({ 'athletes': {$in : mongoose.Types.ObjectId(athleteId) }});
         console.log(listSportsAthlete);
         return listSportsAthlete;
     }
