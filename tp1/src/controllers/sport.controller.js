@@ -14,7 +14,7 @@ class SportController {
         //ajouter dans collection mongoose
         Sport.create(sportName);
         //redirection sur lui-même
-        res.redirect('/')
+        res.redirect('/api/sports')
     }
 
     

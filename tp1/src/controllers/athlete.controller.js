@@ -15,7 +15,7 @@ class AthleteController {
         //ajouter dans collection mongoose
         Athlete.create(formAthlete);
         //redirection sur lui-même
-        res.redirect('/')
+        res.redirect('/api/athletes')
     }
 
     async listSportsByAthlete(athleteId, res) {
