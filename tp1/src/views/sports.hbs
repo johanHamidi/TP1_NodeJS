@@ -1,0 +1,10 @@
+<a>Sport :</a>
+{{#each listSport}}
+<li>{{name}}</li>
+{{/each}}
+
+<form action="/createSports" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="quote" name="quote">
+    <button type="submit">Submit</button>
+</form>

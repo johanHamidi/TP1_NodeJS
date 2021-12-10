@@ -1,11 +1,28 @@
 {
-  "name": "tp1",
+  "name": "olympicgames",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "TP1 Node.js IPI",
+  "main": "app.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "IPI",
+    "JO",
+    "olympic",
+    "games",
+    "jeux",
+    "olympiques"
+  ],
+  "author": "Christophe Bouvard",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
