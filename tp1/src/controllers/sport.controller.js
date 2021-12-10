@@ -16,6 +16,11 @@ class SportController {
         });*/
         return sports
     }
+
+    async insertSport(sportName){
+        Sport.create(sportName);
+    }
+
 }
 
 module.exports = SportController;
