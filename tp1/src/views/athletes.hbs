@@ -2,3 +2,18 @@
 {{#each listAthlete}}
 <li>{{lastName}}</li>
 {{/each}}
+{{#each listSportsAthlete}}
+<li>{{this}}</li>
+{{/each}}
+
+<br>
+
+<!-- ajouter nouveau Sport -->
+<form action="createAthlete" method="POST">
+    <a>Ajouter un athlete : </a><br>
+    <input type="text" placeholder="Prenom" name="firstName">
+    <input type="text" placeholder="Nom" name="lastName">
+    <input type="text" placeholder="Genre" name="gender">
+    <input type="text" placeholder="Pays" name="country">
+    <button type="submit">Submit</button>
+</form>

@@ -1,4 +1,6 @@
 const Athlete = require('../models/athlete.model');
+const Sport = require('../models/sport.model');
+
 
 class AthleteController {
     /**
@@ -6,15 +8,20 @@ class AthleteController {
      */
     async list(req, res) {
         const athlete = await Athlete.find();
-
-       /* res.json({
-            count: sports.length,
-            sports: sports.name
-        });*/
-        /*sports.forEach(sports => {
-            console.log(sports.name);
-        });*/
         return athlete
+    }
+
+    async insertAthlete(formAthlete, res){
+        //ajouter dans collection mongoose
+        Athlete.create(formAthlete);
+        //redirection sur lui-même
+        res.redirect('athletes')
+    }
+
+    async listSportsByAthlete(athleteId, res) {
+        const listSportsAthlete = await Sport.find({ athletes : Athlete({athleteId})});
+        console.log(listSportsAthlete);
+        return listSportsAthlete;
     }
 }
 

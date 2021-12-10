@@ -9,10 +9,16 @@ router.get('/athletes/', async (req, res) => {
    res.render('athletes', {listAthlete});
 });
 
+router.get('/athletes/:athleteId/sports', async (req, res) => {
+  const athleteId = req.params.athleteId;
+  const listSportsAthlete =  await athleteController.listSportsByAthlete(athleteId, res);
+  res.render('athletes', {listSportsAthlete});
+});
+
 router.post('/createAthlete', (req, res) => {
     //Execution lors de la validation du formulaire dans l'index.html
     const formAthlete = req.body;
-    console.log(formAthlete);
+    athleteController.insertAthlete(formAthlete, res);
   })
 
 module.exports = router;
