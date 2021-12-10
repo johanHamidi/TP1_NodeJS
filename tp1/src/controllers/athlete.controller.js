@@ -12,10 +12,23 @@ class AthleteController {
     }
 
     async insertAthlete(formAthlete, res){
-        //ajouter dans collection mongoose
-        Athlete.create(formAthlete);
-        //redirection sur lui-même
-        res.redirect('/api/athletes')
+       
+       try {
+            if(formAthlete.firstName == "" && formAthlete.lastName == "" && formAthlete.gender == "" && formAthlete.country == "" ){
+                console.log("Le champs est vide, veuillez remplir une valeur")
+                res.redirect('/api/athletes')
+            } else {
+                //ajouter dans collection mongoose
+                Athlete.create(formAthlete);
+                //redirection sur lui-même
+                res.redirect('/api/athletes')
+            }
+        
+        } catch (error) {
+            console.log("Le champs n'est pas valide")
+            res.redirect('/api/athletes')
+        }
+        
     }
 
     async listSportsByAthlete(athleteId, res) {

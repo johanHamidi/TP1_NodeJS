@@ -11,10 +11,21 @@ class SportController {
 
 
     async insertSport(sportName, res){
-        //ajouter dans collection mongoose
-        Sport.create(sportName);
-        //redirection sur lui-même
-        res.redirect('/api/sports')
+        try {
+            if(sportName.name != ""){
+                //ajouter dans collection mongoose
+                Sport.create(sportName);
+                //redirection sur lui-même
+                res.redirect('/api/sports')
+            }
+            console.log("Le champs est vide, veuillez remplir une valeur")
+            res.redirect('/api/sports')
+        } catch (error) {
+            console.log("Le champs n'est pas valide")
+            res.redirect('/api/sports')
+        }
+           
+
     }
 
     
