@@ -1,51 +1,93 @@
-<a>Sport :</a>
+{{#if main}}
+&nbsp;
+{{else}}
+<a class="btn btn-outline-secondary" href="/api/sports" role="button" style="margin-left: 20px;">Retour aux sports</a>
+<br>
+{{/if}}
+<br>
+<h1 style="margin-left: 20px;"><strong>Sport {{sportName}} :</strong></h1>
+<br>
 {{#each listSport}}
-<a href="sports/{{_id}}/athletes"><li>{{name}}</li></a>
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f0f4ff;">
+        <a href="/api/sports/{{_id}}/athletes"><li>{{name}}</li></a>
+        <!-- <hr>
+        <input class="btn btn-danger" type="button" value="Supprimer"> -->
+    </div>
+</div>
 {{/each}}
 
+{{#if listAthleteBySport}}
+<p style="margin-left: 20px;">Liste des athletes :</p>
 {{#each listAthleteBySport}}
-    <li>{{this.firstName}} {{this.lastName}}</li>
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f0f4ff;">
+        <li>{{this.firstName}} {{this.lastName}}</li>
+    </div>
+</div>
+
 {{/each}}
+{{/if}}
 
 <br>
 
+{{#if listSport}}
 <!-- ajouter nouveau Sport -->
-<form action="sports/createSports" method="POST">
-    <a>Ajouter un sport : </a><br>
-    <input type="text" placeholder="Sport name" name="name">
-    <button type="submit">Submit</button>
-</form>
-
-<!-- ajouter nouvel Athletes dans un Sport 
-<form action="addAthleteInSports" method="POST">
-    <a>Ajouter un Athletes : </a><br>
-    <input type="text" placeholder="Athlete name" name="Athlete name">
-
-    <a>Sport :</a>
-    <select name="sportName">
-        {{#each listSport}}
-        <option value="{{this.name}}">{{this.name}}</option>
-        {{/each}}
-    </select>
-    <button type="submit">Ajouter Athlete</button>
-</form> -->
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f0fff5;">
+        <form action="/api/sports/createSports" method="POST">
+            <a>Ajouter un sport : </a><br>
+            <input type="text" placeholder="Sport name" name="name">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 
 <!-- ajouter Athletes existant dans un Sport -->
-<form action="sports/addAthleteInSports" method="POST">
 
-    <a>Ajouter un Athletes dans un sport: </a><br>
-    <select name="AthleteId">
-        {{#each listAthlete}}
-        <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
-        {{/each}}
-    </select>
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f8f0ff;">
+        <form action="/api/sports/addAthleteInSports" method="POST">
 
-    <a>Sport :</a>
-    <select name="sportId">
-        {{#each listSport}}
-        <option value="{{this._id}}">{{this.name}}</option>
-        {{/each}}
-    </select>
+            <a>Ajouter un Athletes dans un sport: </a><br>
+            <select name="AthleteId">
+                {{#each listAthlete}}
+                <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
+                {{/each}}
+            </select>
 
-    <button type="submit">Ajouter Athlete</button>
-</form>
+            <a>Sport :</a>
+            <select name="sportId">
+                {{#each listSport}}
+                <option value="{{this._id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+
+            <button type="submit">Ajouter Athlete</button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+
+{{#if main}}
+&nbsp;
+{{else}}
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f8f0ff;">
+        <form action="/api/sports/addAthleteInSports" method="POST">
+
+            <a>Ajouter un Athletes dans {{sportName}} : </a><br>
+            <select name="AthleteId">
+                {{#each listAthlete}}
+                <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
+                {{/each}}
+            </select>
+
+            <input name="sportId" type="hidden" value="{{sportId}}"></input>
+            
+            <button type="submit">Ajouter Athlete</button>
+        </form>
+    </div>
+</div>
+{{/if}}

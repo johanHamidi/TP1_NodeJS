@@ -47,10 +47,10 @@ curl http://localhost:3000/api/sports -H 'Content-Type: application/json'
 
 ### Pages Web Sports/Athlètes
 
-- [ ] Page Web Lister les sports
-- [ ] Page Web Lister les athlètes
-- [ ] Page Web Créer un sport (formulaire)
-- [ ] Page Web Créer un athlète (formulaire)
+- [x] Page Web Lister les sports
+- [x] Page Web Lister les athlètes
+- [x] Page Web Créer un sport (formulaire)
+- [x] Page Web Créer un athlète (formulaire)
 
 ### Autres pages Web Sports/Athlètes (optionnel)
 
@@ -73,7 +73,7 @@ curl http://localhost:3000/api/sports -H 'Content-Type: application/json'
 
 ## Rendu attendu
 
-- [ ] Code source sur un repo Git (sans le dossier node_modules 🙏)
-- [ ] `README.md`
+- [x] Code source sur un repo Git (sans le dossier node_modules 🙏)
+- [x] `README.md`
   - [ ] Instructions pour installer le projet (`git clone`, `npm install`, `npm start`, éventuels exemples de commande `curl`, ...)
   - [ ] Checklist des API et des fonctionnalités Web avec un statut des tests (OK ✅ ou KO ❌)

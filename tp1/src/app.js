@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, '/public')));
+
 // Ajouter les routes via les routers
 const sportRouter = require('./routers/sport.router');
 app.use('/api/sports', sportRouter);
@@ -18,6 +20,13 @@ app.use('/api/sports', sportRouter);
 const athleteRouter = require('./routers/athlete.router');
 app.use('/api/athletes', athleteRouter);
 
+app.get('/', (req, res) => {
+    res.render('index', { name: 'OlympicGames' });
+});
+
+app.get('/index', (req, res) => {
+    res.render('index', { name: 'OlympicGames' });
+});
 
 // Connexion à la base de données
 require('./database/mongodb');

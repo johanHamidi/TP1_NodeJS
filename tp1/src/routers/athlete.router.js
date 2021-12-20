@@ -6,13 +6,14 @@ const athleteController = new AthleteController();
 
 router.get('/', async (req, res) => {
    const listAthlete =  await athleteController.list(req, res);
-   res.render('athletes', {listAthlete});
+   res.render('athletes', {listAthlete, main: true});
 });
 
 router.get('/:athleteId/sports', async (req, res) => {
   const athleteId = req.params.athleteId;
   const listSportsAthlete =  await athleteController.listSportsByAthlete(athleteId, res);
-  res.render('athletes', {listSportsAthlete});
+  const athleteName = await athleteController.getNameAthleteById(athleteId, res);
+  res.render('athletes', {listSportsAthlete, athleteName, main: false});
 });
 
 router.post('/createAthlete', (req, res) => {

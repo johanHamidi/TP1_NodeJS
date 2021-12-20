@@ -11,6 +11,12 @@ class AthleteController {
         return athlete
     }
 
+    async getNameAthleteById(athleteId ,res){
+        const AthleteById = await Athlete.findById(athleteId);
+        const AthleteName = AthleteById.firstName + " " + AthleteById.lastName
+        return AthleteName;
+    }
+
     async insertAthlete(formAthlete, res){
        
        try {
@@ -33,7 +39,6 @@ class AthleteController {
 
     async listSportsByAthlete(athleteId, res) {
         const listSportsAthlete = await Sport.find({ 'athletes': {$in : mongoose.Types.ObjectId(athleteId) }});
-        console.log(listSportsAthlete);
         return listSportsAthlete;
     }
 }

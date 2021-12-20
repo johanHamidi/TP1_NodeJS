@@ -1,19 +1,52 @@
-<a>Athletes :</a>
+{{#if main}}
+&nbsp;
+{{else}}
+<a class="btn btn-outline-secondary" href="/api/athletes" role="button" style="margin-left: 20px;">Retour aux athletes</a>
+<br>
+{{/if}}
+<br>
+<h1 style="margin-left: 20px;"><strong>Athletes {{athleteName}} :</strong></h1>
+<br>
 {{#each listAthlete}}
-<a href="athletes/{{_id}}/sports"><li>{{firstName}} {{lastName}}</li></a>
-{{/each}}
-{{#each listSportsAthlete}}
-<li>{{name}}</li>
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f0f4ff;">
+        <a href="/api/athletes/{{_id}}/sports"><li>{{firstName}} {{lastName}}</li></a>
+        <!-- <hr>
+        <input class="btn btn-danger" type="button" value="Supprimer"> -->
+    </div>
+</div>
 {{/each}}
 
+{{#if listSportsAthlete}}
+<p style="margin-left: 20px;">Liste des sports :</p>
+{{#each listSportsAthlete}}
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f0f4ff;">
+        <li>{{this.name}}</li>
+    </div>
+</div>
+
+{{/each}}
+{{/if}}
 <br>
 
-<!-- ajouter nouveau Sport -->
-<form action="athletes/createAthlete" method="POST">
-    <a>Ajouter un athlete : </a><br>
-    <input type="text" placeholder="Prenom" name="firstName">
-    <input type="text" placeholder="Nom" name="lastName">
-    <input type="text" placeholder="Genre" name="gender">
-    <input type="text" placeholder="Pays" name="country">
-    <button type="submit">Submit</button>
-</form>
+{{#if main}}
+<div class="row">
+    <div class="col-9 carddiv" style="background: #f0fff5;">
+        <!-- ajouter nouveau athlete -->
+        <form action="/api/athletes/createAthlete" method="POST">
+            <a>Ajouter un athlete : </a><br>
+            <input type="text" placeholder="Prenom" name="firstName">
+            <input type="text" placeholder="Nom" name="lastName">
+            <input type="text" placeholder="Genre" name="gender">
+            <input type="text" placeholder="Pays" name="country">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{{else}}
+&nbsp;
+{{/if}}
+
+
+
