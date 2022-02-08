@@ -88,5 +88,18 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/js/scripts.js"></script>
+        <script>
+            window.watsonAssistantChatOptions = {
+                integrationID: "653ec330-ad52-498f-8461-09e884c5bb07", // The ID of this integration.
+                region: "eu-de", // The region your integration is hosted in.
+                serviceInstanceID: "fda6bdd6-cd1a-48b2-bd2d-1bf6ba852f4a", // The ID of your service instance.
+                onLoad: function(instance) { instance.render(); }
+                };
+            setTimeout(function(){
+                const t=document.createElement('script');
+                t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js"
+                document.head.appendChild(t);
+            });
+        </script>
     </body>
 </html>

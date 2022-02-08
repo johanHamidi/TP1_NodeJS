@@ -20,6 +20,9 @@ app.use('/api/sports', sportRouter);
 const athleteRouter = require('./routers/athlete.router');
 app.use('/api/athletes', athleteRouter);
 
+const medailleRouter = require('./routers/medaille.router');
+app.use('/api/webhooks', medailleRouter);
+
 app.get('/', (req, res) => {
     res.render('index', { name: 'OlympicGames' });
 });
